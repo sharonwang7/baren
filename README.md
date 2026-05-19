@@ -8,26 +8,13 @@
 
 ### 1. 配置搜索 API
 
-默认使用 Tavily 搜索，需在 OpenClaw 中配置 API Key：
+默认使用 Tavily 搜索。先获取 API Key（https://tavily.com/#api），然后告诉 Agent：
 
-在 `openclaw.yml` 中添加：
-
-```yaml
-plugins:
-  tavily:
-    apiKey: "你的Tavily API Key"
+```
+> 帮我配置 Tavily 搜索，API Key 是: sk-xxx...
 ```
 
-或：
-
-```yaml
-webSearch:
-  provider: tavily
-  apiKey: "你的Tavily API Key"
-```
-
-> â ï¸ 两种配置位置的 Key 格式不同，如果一种方式报 422，尝试另一种。
-> 获取 Key：https://tavily.com/#api
+Agent 会自动完成配置，无需手动编辑配置文件。
 
 ### 2. 配置 Chrome 调试端口（登录平台用）
 
@@ -37,12 +24,12 @@ webSearch:
 # 1. 完全关闭所有 Chrome 窗口
 # 2. 按 Win+R，输入以下命令后回车：
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=18800 --remote-allow-origins=*
-# 3. Chrome 启动后，登录小红书/微博等需要采集的平台
-# 4. 登录完成后通知 Agent
+# 3. Chrome 启动后，登录需要采集的平台（小红书/微博等）
+# 4. 登录完成后告诉 Agent：Chrome 已登录小红书
 ```
 
 > â ï¸ Chrome 148+ 需加 --user-data-dir 参数
-> `--user-data-dir="C:\Users\你的用户名\AppData\Local\Google\Chrome\User Data"`
+> --user-data-dir="C:\Users\你的用户名\AppData\Local\Google\Chrome\User Data"
 
 ---
 
@@ -66,6 +53,6 @@ webSearch:
 
 ---
 
-> 详细操作指引见 [SKILL.md](./SKILL.md)
+> 详细操作指引见 SKILL.md
 
-Powered by [OpenClaw](https://github.com/openclaw/openclaw)
+Powered by OpenClaw
