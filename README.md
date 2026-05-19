@@ -1,6 +1,50 @@
-# 扒人 · 六路采集工具
+# 扒人 Â· 六路采集工具
 
 > 输入一个人名/主题名，6 路并行采集信息，父进程汇总后直接呈现。
+
+---
+
+## 安装配置
+
+### 1. 配置搜索 API
+
+默认使用 Tavily 搜索，需在 OpenClaw 中配置 API Key：
+
+在 `openclaw.yml` 中添加：
+
+```yaml
+plugins:
+  tavily:
+    apiKey: "你的Tavily API Key"
+```
+
+或：
+
+```yaml
+webSearch:
+  provider: tavily
+  apiKey: "你的Tavily API Key"
+```
+
+> â ï¸ 两种配置位置的 Key 格式不同，如果一种方式报 422，尝试另一种。
+> 获取 Key：https://tavily.com/#api
+
+### 2. 配置 Chrome 调试端口（登录平台用）
+
+采集小红书、微博等需登录的平台，需开启 Chrome 远程调试：
+
+```
+# 1. 完全关闭所有 Chrome 窗口
+# 2. 按 Win+R，输入以下命令后回车：
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=18800 --remote-allow-origins=*
+# 3. Chrome 启动后，登录小红书/微博等需要采集的平台
+# 4. 登录完成后通知 Agent
+```
+
+> â ï¸ Chrome 148+ 需加 --user-data-dir 参数
+> `--user-data-dir="C:\Users\你的用户名\AppData\Local\Google\Chrome\User Data"`
+
+---
 
 ## 一句话用法
 
@@ -20,8 +64,8 @@
 | 5 | 决策/成就记录 | 关键决策、重大事件、荣誉奖项 |
 | 6 | 时间线 | 全量信息的时间排序 |
 
-## 安装后配置
+---
 
-详见 [SKILL.md](./SKILL.md) 中的「安装后：第一步配置指引」。
+> 详细操作指引见 [SKILL.md](./SKILL.md)
 
 Powered by [OpenClaw](https://github.com/openclaw/openclaw)
